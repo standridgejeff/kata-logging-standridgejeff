@@ -7,21 +7,25 @@ namespace LoggingKata
     class Program
     {
         //Why do you think we use ILog?
-        static readonly ILog logger = new TacoLogger();
-        const string csvPath = "TacoBell-US-AL.csv";
+        static readonly ILog Logger = new TacoLogger();
+        const string CsvPath = "TacoBell-US-AL.csv";
 
         static void Main(string[] args)
         {
-            logger.LogInfo("Log initialized");
+            Logger.LogInfo("Log initialized");
 
-            var lines = File.ReadAllLines(csvPath);
+            var lines = File.ReadAllLines(CsvPath);
 
-            logger.LogInfo($"Lines: {lines[0]}");
+            Logger.LogInfo($"Lines: {lines[0]}");
 
             var parser = new TacoParser();
 
-            var locations = lines.Select(parser.Parse);
 
+            var locations = lines.Select(parser.Parse);
+            for ()
+            {
+
+            }
             // TODO:  Find the two TacoBells in Alabama that are the furthurest from one another.
             // HINT:  You'll need two nested forloops
         }
