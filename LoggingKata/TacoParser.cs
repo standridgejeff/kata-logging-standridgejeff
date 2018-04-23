@@ -2,9 +2,6 @@
 
 namespace LoggingKata
 {
-    /// <summary>
-    /// Parses a POI file to locate all the TacoBells
-    /// </summary>
     public class TacoParser
     {
         readonly ILog logger = new TacoLogger();
@@ -48,7 +45,6 @@ namespace LoggingKata
                 Console.WriteLine(e);
                 return null;
             }
-
             return new TacoBell
             {
                 Location = new Point {Longitude = lon, Latitude = lat},

@@ -8,7 +8,6 @@ namespace LoggingKata
 {
     class Program
     {
-        //Why do you think we use ILog?
         static readonly ILog Logger = new TacoLogger();
         
         const string CsvPath = "TacoBell-US-AL.csv";
@@ -55,10 +54,8 @@ namespace LoggingKata
             }
 
             Console.WriteLine($"The two Taco Bells that are farthest apart are: {a.Name} and {b.Name}");
-            Console.WriteLine($"These two locations are {distance} apart");
+            Console.WriteLine($"These two locations are {distance} meters apart");
             Console.ReadLine();
-            // TODO:  Find the two TacoBells in Alabama that are the furthurest from one another.
-            // HINT:  You'll need two nested forloops
         }
     }
 }
