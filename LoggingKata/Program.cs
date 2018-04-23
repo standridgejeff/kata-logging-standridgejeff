@@ -53,8 +53,8 @@ namespace LoggingKata
                 }
             }
 
-            Console.WriteLine($"The two Taco Bells that are farthest apart are: {a.Name} and {b.Name}");
-            Console.WriteLine($"These two locations are {distance} meters apart");
+            Console.WriteLine($"The two Taco Bells that are furthest apart are: {a.Name} and {b.Name}");
+            Console.WriteLine($"These two locations are {Math.Round(distance/1000)} kilometers apart");
             Console.ReadLine();
         }
     }

@@ -17,27 +17,34 @@ namespace LoggingKata
             }
 
             var cells = line.Split(',');
-            if (cells.Length < 3)
+            if (cells.Length < 2)
             {
-                logger.LogError("This line is an invalid length");
+                logger.LogWarning("This line is an invalid length");
                 return null;
             }
 
-            var lon = Double.Parse(cells[0]);
-            var lat = Double.Parse(cells[1]);
-            var name = cells[2];
             try
             {
-                if (lat > Point.MaxLat || lat < -Point.MaxLat)
+                var lon = Double.Parse(cells[0]);
+                if (Math.Abs(lon) > Point.MaxLon)
                 {
                     logger.LogError("This Latitude is out of range");
                     return null;
                 }
-                if (lon > Point.MaxLon || lon < -Point.MaxLon)
+
+                var lat = Double.Parse(cells[1]);
+                if (Math.Abs(lat) > Point.MaxLat)
                 {
                     logger.LogError("This Longitude is out of range");
                     return null;
                 }
+
+                var name = cells[2];
+                return new TacoBell
+                {
+                Location = new Point {Longitude = lon, Latitude = lat},
+                Name = name
+                };
             }
             catch (Exception e)
             {
@@ -45,11 +52,7 @@ namespace LoggingKata
                 Console.WriteLine(e);
                 return null;
             }
-            return new TacoBell
-            {
-                Location = new Point {Longitude = lon, Latitude = lat},
-                Name = name
-            };
+            
         }
     }
 }
