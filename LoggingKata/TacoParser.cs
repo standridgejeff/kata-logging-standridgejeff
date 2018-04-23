@@ -11,11 +11,11 @@ namespace LoggingKata
         
         public ITrackable Parse(string line)
         {
-            logger.LogInfo("Begin parsing");
+            logger.LogInfo("Parsing");
             
             if (string.IsNullOrEmpty(line))
             {
-                logger.LogError("This line is empty");
+                logger.LogFatal("This line is empty");
                 return null;
             }
 
