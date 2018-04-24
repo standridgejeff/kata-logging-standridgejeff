@@ -8,7 +8,7 @@ namespace LoggingKata.Test
 
         [Theory]
         [InlineData("-86.889051, 33.556383, Taco Bell Birmingham")]
-        [InlineData("-86.889051, 33.56383")]
+        [InlineData("-86.889051, 33.556383")]
         public void ShouldParse(string line)
         {
             var tParser = new TacoParser();
@@ -16,7 +16,6 @@ namespace LoggingKata.Test
             var result = tParser.Parse(line);
 
             Assert.NotNull(result);
-            Assert.NotNull(result.Location);
         }
 
         [Theory]
@@ -29,11 +28,10 @@ namespace LoggingKata.Test
         public void ShouldFailParse(string line)
         {
             var tParser = new TacoParser();
-            ITrackable expected = null;
 
             var actual = tParser.Parse(line);
 
-            Assert.Equal(expected, actual);
+            Assert.Null(actual);
         }
     }
 }
