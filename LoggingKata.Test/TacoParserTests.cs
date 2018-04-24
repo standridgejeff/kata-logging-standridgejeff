@@ -1,29 +1,38 @@
-using System;
 using Xunit;
+
 
 namespace LoggingKata.Test
 {
     public class TacoParserTests
     {
-        [Fact]
-        public void ShouldDoSomething()
-        {
-            // TODO: Complete Something, if anything
-        }
 
         [Theory]
-        [InlineData("Example")]
-        public void ShouldParse(string str)
+        [InlineData("-86.889051, 33.556383, Taco Bell Birmingham")]
+        [InlineData("-86.889051, 33.556383")]
+        public void ShouldParse(string line)
         {
-            // TODO: Complete Should Parse
+            var tParser = new TacoParser();
+
+            var result = tParser.Parse(line);
+
+            Assert.NotNull(result);
         }
 
         [Theory]
         [InlineData(null)]
         [InlineData("")]
-        public void ShouldFailParse(string str)
+        [InlineData("1234, 1234")]
+        [InlineData("1234, 1234, Location, Other")]
+        [InlineData("-190.05, 85.50, Location")]
+        [InlineData("170.02, 100.20, Location")]
+        public void ShouldFailParse(string line)
         {
-            // TODO: Complete Should Fail Parse
+            var tParser = new TacoParser();
+
+            var actual = tParser.Parse(line);
+
+            Assert.Null(actual);
         }
     }
 }
+
