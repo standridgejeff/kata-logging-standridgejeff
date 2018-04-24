@@ -5,11 +5,11 @@ namespace LoggingKata
     public class TacoParser
     {
         readonly ILog logger = new TacoLogger();
-        
+
         public ITrackable Parse(string line)
         {
             logger.LogInfo("Parsing");
-            
+
             if (string.IsNullOrEmpty(line))
             {
                 logger.LogFatal("This line is empty");
@@ -42,8 +42,8 @@ namespace LoggingKata
                 var name = cells[2];
                 return new TacoBell
                 {
-                Location = new Point {Longitude = lon, Latitude = lat},
-                Name = name
+                    Location = new Point { Longitude = lon, Latitude = lat },
+                    Name = name
                 };
             }
             catch (Exception e)
@@ -52,7 +52,7 @@ namespace LoggingKata
                 Console.WriteLine(e);
                 return null;
             }
-            
+
         }
     }
 }
